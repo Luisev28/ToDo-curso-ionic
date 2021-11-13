@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="success">
+    <ion-title>
+      TODO
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list class="animated bouceInU">
+    <ion-item-sliding *ngFor = "let task of tasks">
+      <ion-item (click)= "openActions(task)">
+      <ion-label *ngIf="!task.done">{{task.name}}</ion-label>
+      <ion-label *ngIf="task.done"><del>{{task.name}}</del></ion-label>
+     <ion-icon slot="start" name="radio-button-off"*ngIf="!task.done"></ion-icon>
+      <ion-icon slot="start" name="checkmark-cicle" color="success" *ngIf="task.done"></ion-icon>
+    </ion-item>
+    <ion-item-options side="start">
+      <ion-item-options (click)="delete(task)"> Excluir</ion-item-options>
+    </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+   
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)= "showAdd()"color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+ 
+</ion-content>
